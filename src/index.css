@@ -1,0 +1,69 @@
+:root {
+  --font-primary: "Inter", sans-serif;
+  --font-header: "Permanent Marker", cursive;
+  --color-bg: #dce1e7;
+  --color-txt: #262528;
+  --color-txt-low-emphasis: #5e5d5d;
+  --spacing-outer: 5em;
+  --spacing-inner: 3em;
+  --spacing-min: 1em;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body,
+button,
+input {
+  font-family: var(--font-primary);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-txt);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-header);
+}
+
+/* Utility  */
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+/* Badges  */
+.badges {
+  gap: var(--spacing-min);
+}
+
+.badge-container {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1em;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+}
+
+.badge {
+  color: var(--color-txt-badge);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 0.4em 0.8em;
+}
+
+.type-header {
+  font-size: 1rem;
+  color: var(--color-txt-low-emphasis);
+}

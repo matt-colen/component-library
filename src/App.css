@@ -1,0 +1,11 @@
+.container {
+  padding: var(--spacing-outer) 10%;
+  max-width: 1350px;
+  margin: 0 auto;
+  gap: var(--spacing-inner);
+}
+
+.title {
+  font-size: 2.5rem;
+  line-height: 1.4;
+}
