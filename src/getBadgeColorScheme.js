@@ -1,4 +1,4 @@
-const getColorScheme = (color) => {
+const getBadgeColorScheme = (color) => {
   let txtColor;
   let badgeColor;
 
@@ -39,4 +39,4 @@ const getColorScheme = (color) => {
   return [txtColor, badgeColor];
 };
 
-export default getColorScheme;
+export default getBadgeColorScheme;
