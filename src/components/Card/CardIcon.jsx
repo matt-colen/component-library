@@ -11,7 +11,7 @@ export default function CardIcon({
 
   return (
     <div style={styles} className="card-icon flex">
-      <img src={icon} alt={alt} />
+      {typeof icon === "string" ? <img src={icon} alt={alt} /> : icon}
     </div>
   );
 }

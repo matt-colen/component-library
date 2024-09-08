@@ -146,6 +146,12 @@ p {
     0px 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+.card-icon > svg {
+  height: 24px;
+  width: 24px;
+  color: #fff;
+}
+
 .card-txt {
   margin-top: 1em;
   gap: var(--spacing-min);
@@ -170,6 +176,11 @@ p {
   gap: var(--spacing-inner);
 }
 
+.no-img.testimonial {
+  grid-template-columns: 1fr;
+  margin-top: var(--spacing-inner);
+}
+
 .testimonial-img {
   height: 200px;
   width: calc(100% - (var(--spacing-testimonial-inner) * 2));
@@ -183,6 +194,11 @@ p {
 .testimonial-txt {
   margin-top: 100px;
   font-weight: 500;
+}
+
+.no-img .testimonial-txt {
+  text-align: center;
+  margin-top: 0;
 }
 
 .quote {

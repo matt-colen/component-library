@@ -51,15 +51,30 @@ export default function Main() {
       </Section>
 
       <Section header="testimonials">
-        <Testimonial bgColor={defaultColor}>
-          <TestimonialImg
-            img={testimonialPic}
-            alt="Woman smiling while sitting in chair"
-          />
+        <Testimonial
+          bgColor={defaultColor}
+          img={testimonialPic}
+          alt="Woman smiling while sitting in chair"
+        >
+          <TestimonialImg />
           <TestimonialText name="May Andersons" workDetails="Workcation, CTO">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna
             nulla vitae laoreet augue. Amet feugiat est integer dolor auctor
-            adipiscing nunc urna, sit.{" "}
+            adipiscing nunc urna, sit.
+          </TestimonialText>
+        </Testimonial>
+        <Testimonial bgColor="salmon">
+          <TestimonialImg img="" alt="">
+            {(img, alt) => {
+              return img ? (
+                <img className="testimonial-img" src={img} alt={alt} />
+              ) : null;
+            }}
+          </TestimonialImg>
+          <TestimonialText name="May Andersons" workDetails="Workcation, CTO">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna
+            nulla vitae laoreet augue. Amet feugiat est integer dolor auctor
+            adipiscing nunc urna, sit.
           </TestimonialText>
         </Testimonial>
       </Section>
