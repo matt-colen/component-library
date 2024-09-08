@@ -2,11 +2,15 @@ import Section from "../Section/Section";
 import Badges from "../Badges/index";
 import Banner from "../Banner/index";
 import Card from "../Card/index";
+import Testimonial from "../Testimonial/index";
 import { nanoid } from "nanoid";
-import uploadIcon from "../../assets/icons/upload.svg";
+import TestimonialImg from "../Testimonial/TestimonialImg";
+import TestimonialText from "../Testimonial/TestimonialText";
+import testimonialPic from "../../assets/images/testimonial.jpg";
 
 export default function Main() {
   const statuses = ["success", "warning", "error", "neutral"];
+  const defaultColor = "#2545B8";
 
   return (
     <main className="main grid">
@@ -36,9 +40,7 @@ export default function Main() {
 
       <Section header="Cards">
         <Card>
-          <Card.Icon>
-            <img src={uploadIcon} alt="upload icon" />
-          </Card.Icon>
+          <Card.Icon bgColor={defaultColor} />
           <Card.Text header="Easy Deployment">
             <p>
               Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et
@@ -46,6 +48,20 @@ export default function Main() {
             </p>
           </Card.Text>
         </Card>
+      </Section>
+
+      <Section header="testimonials">
+        <Testimonial bgColor={defaultColor}>
+          <TestimonialImg
+            img={testimonialPic}
+            alt="Woman smiling while sitting in chair"
+          />
+          <TestimonialText name="May Andersons" workDetails="Workcation, CTO">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna
+            nulla vitae laoreet augue. Amet feugiat est integer dolor auctor
+            adipiscing nunc urna, sit.{" "}
+          </TestimonialText>
+        </Testimonial>
       </Section>
     </main>
   );
