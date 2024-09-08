@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { BannerContext } from "./Banner";
 
 export default function BannerText({ title, children }) {
-  const { titleColor, txtColor } = useContext(BannerContext);
+  const { titleColor, txtColor, header } = useContext(BannerContext);
 
   const titleStyles = {
     color: titleColor,
@@ -15,7 +15,7 @@ export default function BannerText({ title, children }) {
   return (
     <div className="banner-txt grid">
       <h4 style={titleStyles} className="banner-title">
-        {title}
+        {title || header}
       </h4>
       <div style={txtStyles} className="banner-content">
         {children}

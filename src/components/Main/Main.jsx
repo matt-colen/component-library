@@ -1,53 +1,52 @@
+import Section from "../Section/Section";
+import Badges from "../Badges/index";
 import Banner from "../Banner/index";
-import BadgeRow from "../BadgeRow/BadgeRow";
+import Card from "../Card/index";
+import { nanoid } from "nanoid";
+import uploadIcon from "../../assets/icons/upload.svg";
 
 export default function Main() {
+  const statuses = ["success", "warning", "error", "neutral"];
+
   return (
     <main className="main grid">
-      <section className="section grid">
-        <h2>Badges</h2>
-        <BadgeRow />
-        <BadgeRow style="pill" />
-      </section>
-      <section className="section grid">
-        <h2>Banners</h2>
-        <Banner type="success">
-          <Banner.Icon></Banner.Icon>
-          <Banner.Text title="Congratulations">
+      <Section header="Badges">
+        <Badges style="square" />
+        <Badges style="pill" />
+      </Section>
+
+      <Section header="Banners">
+        {statuses.map((status) => {
+          return (
+            <div key={nanoid()}>
+              <Banner type={status}>
+                <Banner.Icon />
+                <Banner.Text>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aliquid pariatur, ipsum similique veniam quo totam eius
+                    aperiam dolorum.
+                  </p>
+                </Banner.Text>
+              </Banner>
+            </div>
+          );
+        })}
+      </Section>
+
+      <Section header="Cards">
+        <Card>
+          <Card.Icon>
+            <img src={uploadIcon} alt="upload icon" />
+          </Card.Icon>
+          <Card.Text header="Easy Deployment">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              pariatur, ipsum similique veniam quo totam eius aperiam dolorum.
+              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et
+              magna sit morbi lobortis.
             </p>
-          </Banner.Text>
-        </Banner>
-        <Banner type="warning">
-          <Banner.Icon></Banner.Icon>
-          <Banner.Text title="Attention">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              pariatur, ipsum similique veniam quo totam eius aperiam dolorum.
-            </p>
-          </Banner.Text>
-        </Banner>
-        <Banner type="error">
-          <Banner.Icon></Banner.Icon>
-          <Banner.Text title="There is a problem with your application">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              pariatur, ipsum similique veniam quo totam eius aperiam dolorum.
-            </p>
-          </Banner.Text>
-        </Banner>
-        <Banner type="neutral">
-          <Banner.Icon></Banner.Icon>
-          <Banner.Text title="Update available">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              pariatur, ipsum similique veniam quo totam eius aperiam dolorum.
-            </p>
-          </Banner.Text>
-        </Banner>
-      </section>
+          </Card.Text>
+        </Card>
+      </Section>
     </main>
   );
 }

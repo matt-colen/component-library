@@ -1,4 +1,4 @@
-import getBadgeColorScheme from "../../getBadgeColorScheme";
+import getBadgeColorScheme from "../../helpers/getBadgeColorScheme";
 
 export default function Badge({ children, color, style = "square" }) {
   const [txtColor, badgeColor] = getBadgeColorScheme(color.toLowerCase());

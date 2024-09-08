@@ -1,16 +1,20 @@
 import { createContext } from "react";
-import getBannerColorScheme from "../../getBannerColorScheme";
+import getBannerStyles from "../../helpers/getBannerStyles";
+
 const BannerContext = createContext();
 
 export default function Banner({ children, type }) {
-  const [icon, titleColor, txtColor, bannerColor] = getBannerColorScheme(type);
+  const [icon, titleColor, txtColor, bannerColor, header] =
+    getBannerStyles(type);
 
   const bannerStyles = {
     background: bannerColor,
   };
 
   return (
-    <BannerContext.Provider value={{ icon, titleColor, txtColor }}>
+    <BannerContext.Provider
+      value={{ icon, titleColor, txtColor, type, header }}
+    >
       <div style={bannerStyles} className="banner grid">
         {children}
       </div>

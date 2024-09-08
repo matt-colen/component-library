@@ -1,4 +1,4 @@
-import Badge from "../Badge/Badge";
+import Badges from "./index";
 
 export default function BadgeRow({ style = "square" }) {
   const pillColors = [
@@ -17,9 +17,9 @@ export default function BadgeRow({ style = "square" }) {
       <h3 className="type-header">{style}</h3>
       <div className="badge-container grid">
         {pillColors.map((color) => (
-          <Badge key={color} color={color} style={style}>
+          <Badges.Badge key={color} color={color} style={style}>
             Badge
-          </Badge>
+          </Badges.Badge>
         ))}
       </div>
     </>

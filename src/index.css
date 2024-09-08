@@ -2,8 +2,12 @@
   --font-primary: "Inter", sans-serif;
   --font-header: "Permanent Marker", cursive;
   --color-bg: #dce1e7;
+  --color-bg-card: #f9fafb;
+  --color-bg-card-icon: #3f75fe;
   --color-txt: #262528;
+  --color-card-header: #111827;
   --color-txt-low-emphasis: #5e5d5d;
+  --color-txt-low-emphasis-card: #6b7280;
   --spacing-outer: 5em;
   --spacing-inner: 3em;
   --spacing-min: 1em;
@@ -110,3 +114,46 @@ p {
   font-weight: 500;
 }
 
+/* Cards  */
+.card {
+  margin-top: 24px;
+  padding: 2em 1.5em;
+  border-radius: 8px;
+  background: var(--color-bg-card);
+  max-width: 350px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+  position: absolute;
+  top: calc(0% - 24px);
+  left: calc(50% - 24px);
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: var(--color-bg-card-icon);
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card-txt {
+  margin-top: 1em;
+  gap: var(--spacing-min);
+  color: var(--color-txt-low-emphasis-card);
+}
+
+.card-header {
+  color: var(--color-card-header);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
