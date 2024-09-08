@@ -50,7 +50,7 @@ export default function Main() {
         </Card>
       </Section>
 
-      <Section header="testimonials">
+      <Section header="Testimonials">
         <Testimonial
           bgColor={defaultColor}
           img={testimonialPic}
@@ -63,14 +63,8 @@ export default function Main() {
             adipiscing nunc urna, sit.
           </TestimonialText>
         </Testimonial>
-        <Testimonial bgColor="salmon">
-          <TestimonialImg img="" alt="">
-            {(img, alt) => {
-              return img ? (
-                <img className="testimonial-img" src={img} alt={alt} />
-              ) : null;
-            }}
-          </TestimonialImg>
+        <Testimonial bgColor={defaultColor} img="" alt="">
+          <TestimonialImg />
           <TestimonialText name="May Andersons" workDetails="Workcation, CTO">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna
             nulla vitae laoreet augue. Amet feugiat est integer dolor auctor
@@ -78,6 +72,8 @@ export default function Main() {
           </TestimonialText>
         </Testimonial>
       </Section>
+
+      <Section header="Tooltips"></Section>
     </main>
   );
 }
