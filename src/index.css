@@ -40,6 +40,10 @@ p {
   line-height: 1.4;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* Utility  */
 .flex {
   display: flex;
@@ -229,5 +233,141 @@ p {
   .testimonial-txt {
     margin-top: unset;
     grid-column: 2;
+  }
+}
+
+/* Tooltips  */
+.tooltip-wrapper {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-inner);
+}
+
+.tooltip {
+  justify-content: start;
+  align-items: start;
+  gap: 1em;
+  padding: 1em;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  border-radius: 8px;
+  position: relative;
+  max-width: 500px;
+}
+
+.tooltip.black.bold,
+.tooltip.black.bold .tooltip-btn,
+.tooltip.black.bold .polygon {
+  background: #262626;
+  color: #c7c7c7;
+}
+
+.tooltip.black.light,
+.tooltip.black.light .tooltip-btn,
+.tooltip.black.light .polygon {
+  background: #fff;
+  color: #6b7280;
+}
+
+.tooltip.blue.bold,
+.tooltip.blue.bold .tooltip-btn,
+.tooltip.blue.bold .polygon {
+  background: #1e40af;
+  color: #e8edff;
+}
+
+.tooltip.blue.light,
+.tooltip.blue.light .tooltip-btn,
+.tooltip.blue.light .polygon {
+  background: #e0e7ff;
+  color: #1c51b9;
+}
+
+.tooltip.magenta.bold,
+.tooltip.magenta.bold .tooltip-btn,
+.tooltip.magenta.bold .polygon {
+  background: #a9229b;
+  color: #ffe9fd;
+}
+
+.tooltip.magenta.light,
+.tooltip.magenta.light .tooltip-btn,
+.tooltip.magenta.light .polygon {
+  background: #fff3fc;
+  color: #c7369e;
+}
+
+.tooltip.green.bold,
+.tooltip.green.bold .tooltip-btn,
+.tooltip.green.bold .polygon {
+  background: #47aa5d;
+  color: #e3ffe9;
+}
+
+.tooltip.green.light,
+.tooltip.green.light .tooltip-btn,
+.tooltip.green.light .polygon {
+  background: #e7fff3;
+  color: #3c8c4e;
+}
+
+.tooltip-icon > svg {
+  height: 24px;
+  width: 24px;
+}
+
+.tooltip-header {
+  font-weight: 700;
+  margin-bottom: 0.2em;
+}
+
+.tooltip.bold .tooltip-header {
+  color: #fff;
+}
+
+.tooltip.black.light .tooltip-header {
+  color: #111827;
+}
+
+.tooltip.blue.light .tooltip-header {
+  color: #1e40af;
+}
+
+.tooltip.magenta.light .tooltip-header {
+  color: #a9229b;
+}
+
+.tooltip.green.light .tooltip-header {
+  color: #137a2a;
+}
+
+.tooltip-btn {
+  padding: 0 0.2em 0.2em 0.2em;
+  background: none;
+  border: none;
+}
+
+.tooltip-btn svg {
+  height: 20px;
+  width: 20px;
+}
+
+.polygon {
+  mask-image: url("./assets/images//tooltip-polygon.svg");
+  mask-size: cover;
+  width: 34px;
+  height: 19px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: -14px;
+  left: 48px;
+}
+
+@media (min-width: 850px) {
+  .tooltip-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }

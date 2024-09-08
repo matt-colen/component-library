@@ -3,10 +3,12 @@ import Badges from "../Badges/index";
 import Banner from "../Banner/index";
 import Card from "../Card/index";
 import Testimonial from "../Testimonial/index";
+import Tooltip from "../Tooltip/index";
 import { nanoid } from "nanoid";
-import TestimonialImg from "../Testimonial/TestimonialImg";
-import TestimonialText from "../Testimonial/TestimonialText";
 import testimonialPic from "../../assets/images/testimonial.jpg";
+import { MdOutlineArchive } from "react-icons/md";
+import { MdOutlineClose } from "react-icons/md";
+import tooltipTypes from "../../tooltipData";
 
 export default function Main() {
   const statuses = ["success", "warning", "error", "neutral"];
@@ -56,24 +58,47 @@ export default function Main() {
           img={testimonialPic}
           alt="Woman smiling while sitting in chair"
         >
-          <TestimonialImg />
-          <TestimonialText name="May Andersons" workDetails="Workcation, CTO">
+          <Testimonial.Img />
+          <Testimonial.Text name="May Andersons" workDetails="Workcation, CTO">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna
             nulla vitae laoreet augue. Amet feugiat est integer dolor auctor
             adipiscing nunc urna, sit.
-          </TestimonialText>
+          </Testimonial.Text>
         </Testimonial>
         <Testimonial bgColor={defaultColor} img="" alt="">
-          <TestimonialImg />
-          <TestimonialText name="May Andersons" workDetails="Workcation, CTO">
+          <Testimonial.Img />
+          <Testimonial.Text name="May Andersons" workDetails="Workcation, CTO">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna
             nulla vitae laoreet augue. Amet feugiat est integer dolor auctor
             adipiscing nunc urna, sit.
-          </TestimonialText>
+          </Testimonial.Text>
         </Testimonial>
       </Section>
 
-      <Section header="Tooltips"></Section>
+      <Section header="Tooltips">
+        <div className="tooltip-wrapper grid">
+          {tooltipTypes.map((tooltip) => {
+            return (
+              <>
+                <Tooltip baseColor={tooltip.baseColor} style={tooltip.type}>
+                  <Tooltip.Icon>
+                    <MdOutlineArchive />
+                  </Tooltip.Icon>
+                  <Tooltip.Content header={`${tooltip.type === 'bold' ? 'Bold' : 'Light'} Tooltip`}>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit
+                      oluptatum tenetur.
+                    </p>
+                  </Tooltip.Content>
+                  <Tooltip.Btn>
+                    <MdOutlineClose />
+                  </Tooltip.Btn>
+                </Tooltip>
+              </>
+            );
+          })}
+        </div>
+      </Section>
     </main>
   );
 }
