@@ -4,6 +4,7 @@ import Banner from "../Banner/index";
 import Card from "../Card/index";
 import Testimonial from "../Testimonial/index";
 import Tooltip from "../Tooltip/index";
+import Toast from "../Toast/index";
 import { nanoid } from "nanoid";
 import testimonialPic from "../../assets/images/testimonial.jpg";
 import { MdOutlineArchive } from "react-icons/md";
@@ -84,7 +85,11 @@ export default function Main() {
                   <Tooltip.Icon>
                     <MdOutlineArchive />
                   </Tooltip.Icon>
-                  <Tooltip.Content header={`${tooltip.type === 'bold' ? 'Bold' : 'Light'} Tooltip`}>
+                  <Tooltip.Content
+                    header={`${
+                      tooltip.type === "bold" ? "Bold" : "Light"
+                    } Tooltip`}
+                  >
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit
                       oluptatum tenetur.
@@ -94,6 +99,23 @@ export default function Main() {
                     <MdOutlineClose />
                   </Tooltip.Btn>
                 </Tooltip>
+              </>
+            );
+          })}
+        </div>
+      </Section>
+
+      <Section header="Toast">
+        <div className="toast-wrapper grid">
+          {statuses.map((status) => {
+            return (
+              <>
+                <Toast type={status}>
+                  <Toast.Icon></Toast.Icon>
+                  <Toast.Content title="">
+                    <p>Lorem ipsum dolor sit amet.</p>
+                  </Toast.Content>
+                </Toast>
               </>
             );
           })}
