@@ -12,6 +12,11 @@
   --spacing-inner: 3em;
   --spacing-min: 1em;
   --spacing-testimonial-inner: 2em;
+  --line-height-general: 1.4;
+  --font-size-min: 0.9rem;
+  --radius-sm: 6px;
+  --radius-normal: 8px;
+  --radius-lg: 12px;
 }
 
 * {
@@ -36,12 +41,33 @@ h3 {
   font-family: var(--font-header);
 }
 
-p {
-  line-height: 1.4;
+p,
+.title .badge,
+.quote,
+.quote-detail,
+.tooltip,
+.toast {
+  line-height: var(--line-height-general);
 }
 
-button {
+button,
+.btn,
+.card {
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn,
+.badge {
+  border: none;
+  background: none;
+  font-size: var(--font-size-min);
+  padding: 0.4em 0.8em;
+  font-weight: bold;
+}
+
+.btn:hover {
+  opacity: 0.9;
 }
 
 /* Utility  */
@@ -53,6 +79,7 @@ button {
   display: grid;
 }
 
+/* Layout  */
 .container {
   padding: var(--spacing-outer) 10%;
   max-width: 1350px;
@@ -63,10 +90,12 @@ button {
   gap: var(--spacing-inner);
 }
 
+.section {
+  gap: var(--spacing-min);
+}
+
 /* Headers  */
 .title {
-  font-size: 2.5rem;
-  line-height: 1.4;
   margin-bottom: var(--spacing-min);
 }
 
@@ -76,39 +105,22 @@ button {
 }
 
 /* Badges  */
-.section {
-  gap: var(--spacing-min);
-}
-
 .badge-container {
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1em;
-}
-
-.btn {
-  border: none;
-  cursor: pointer;
-}
-
-.btn:hover {
-  opacity: 0.9;
+  gap: var(--spacing-min);
 }
 
 .badge {
   color: var(--color-txt-badge);
-  font-size: 0.9rem;
-  line-height: 1.4;
-  padding: 0.4em 0.8em;
-  font-weight: bold;
 }
 
 /* Banners  */
 .banner {
-  padding: 1em;
+  padding: var(--spacing-min);
   grid-template-columns: auto 1fr;
-  gap: 1em;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  gap: var(--spacing-min);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-min);
 }
 
 .banner-txt {
@@ -116,20 +128,23 @@ button {
 }
 
 .banner-title {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 /* Cards  */
 .card {
   margin-top: 24px;
   padding: 2em 1.5em;
-  border-radius: 8px;
+  border-radius: var(--radius-normal);
   background: var(--color-bg-card);
-  max-width: 350px;
   text-align: center;
   position: relative;
-  transition: all 0.3s;
-  cursor: pointer;
+}
+
+@media (min-width: 500px) {
+  .card {
+    max-width: 350px;
+  }
 }
 
 .card:hover {
@@ -138,11 +153,12 @@ button {
 
 .card-icon {
   position: absolute;
-  top: calc(0% - 24px);
-  left: calc(50% - 24px);
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 48px;
   height: 48px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: var(--color-bg-card-icon);
   justify-content: center;
   align-items: center;
@@ -157,7 +173,7 @@ button {
 }
 
 .card-txt {
-  margin-top: 1em;
+  margin-top: var(--spacing-min);
   gap: var(--spacing-min);
   color: var(--color-txt-low-emphasis-card);
 }
@@ -189,10 +205,11 @@ button {
   height: 200px;
   width: calc(100% - (var(--spacing-testimonial-inner) * 2));
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   position: absolute;
-  top: -100px;
-  left: var(--spacing-testimonial-inner);
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .testimonial-txt {
@@ -207,13 +224,11 @@ button {
 
 .quote {
   font-size: 1.1rem;
-  line-height: 1.33;
   margin-bottom: var(--spacing-min);
 }
 
 .quote-detail {
-  line-height: 1.5;
-  font-size: 0.8rem;
+  font-size: var(--font-size-min);
 }
 
 @media (min-width: 800px) {
@@ -228,6 +243,7 @@ button {
     width: 25%;
     max-width: 384px;
     top: -10%;
+    transform: translateY(0%);
     left: var(--spacing-testimonial-inner);
   }
   .testimonial-txt {
@@ -245,13 +261,12 @@ button {
 .tooltip {
   justify-content: start;
   align-items: start;
-  gap: 1em;
-  padding: 1em;
+  gap: var(--spacing-min);
+  padding: var(--spacing-min);
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
     0px 4px 6px -2px rgba(0, 0, 0, 0.05);
-  font-size: 0.8rem;
-  line-height: 1.4;
-  border-radius: 8px;
+  font-size: var(--font-size-min);
+  border-radius: var(--radius-normal);
   position: relative;
   max-width: 500px;
 }
@@ -312,7 +327,7 @@ button {
   color: #3c8c4e;
 }
 
-.tooltip-icon > svg {
+.tooltip-icon > svg .tooltip-btn {
   height: 24px;
   width: 24px;
 }
@@ -363,7 +378,7 @@ button {
   background-repeat: no-repeat;
   position: absolute;
   bottom: -14px;
-  left: 48px;
+  left: 15%;
 }
 
 @media (min-width: 850px) {
@@ -376,17 +391,16 @@ button {
 /* Toast  */
 .toast-wrapper {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2em;
+  gap: var(--spacing-min);
 }
 
 .toast {
-  padding: 1em;
+  padding: var(--spacing-min);
   gap: 0.7em;
-  border-radius: 8px;
+  border-radius: var(--radius-normal);
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
     0px 4px 6px -2px rgba(0, 0, 0, 0.05);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: var(--font-size-min);
   position: fixed;
   bottom: 20px;
   left: 50%;
@@ -432,13 +446,13 @@ button {
 
 .form-select {
   padding: 0.5em;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .form-btn {
   border: none;
   background: var(--color-bg-card-icon);
   color: #fff;
-  padding: 0.5em 1em;
-  border-radius: 4px;
+  padding: 0.5em var(--spacing-min);
+  border-radius: var(--radius-sm);
 }

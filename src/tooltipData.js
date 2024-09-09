@@ -1,4 +1,4 @@
-const tooltipTypes = [
+const tooltipData = [
   {
     baseColor: "black",
     type: "bold",
@@ -33,4 +33,4 @@ const tooltipTypes = [
   },
 ];
 
-export default tooltipTypes;
+export default tooltipData;

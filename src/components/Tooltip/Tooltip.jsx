@@ -6,7 +6,6 @@ export default function Tooltip({ children, baseColor, style }) {
   const [on, setOn] = useState(true);
 
   const toggle = () => {
-    console.log("clicked");
     setOn((prevOn) => !prevOn);
   };
 
