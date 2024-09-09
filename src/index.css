@@ -387,8 +387,58 @@ button {
     0px 4px 6px -2px rgba(0, 0, 0, 0.05);
   font-size: 0.9rem;
   line-height: 1.4;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0; /* Hidden by default */
+  visibility: hidden; /* Ensures it doesn't take up space when hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-in */
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .toast-title {
   font-weight: bold;
+}
+
+.toast-form {
+  gap: var(--spacing-min);
+}
+
+@media (min-width: 500px) {
+  .toast-form {
+    max-width: 200px;
+  }
+}
+
+.toast-label {
+  color: var(--color-txt-low-emphasis);
+}
+
+.form-select {
+  padding: 0.5em;
+  border-radius: 4px;
+}
+
+.form-btn {
+  border: none;
+  background: var(--color-bg-card-icon);
+  color: #fff;
+  padding: 0.5em 1em;
+  border-radius: 4px;
 }

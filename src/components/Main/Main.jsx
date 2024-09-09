@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Section from "../Section/Section";
 import Badges from "../Badges/index";
 import Banner from "../Banner/index";
@@ -12,6 +13,19 @@ import { MdOutlineClose } from "react-icons/md";
 import tooltipTypes from "../../tooltipData";
 
 export default function Main() {
+  const [showToast, setShowToast] = useState(false);
+  const [toastType, setToastType] = useState("success"); // Tracks the selected toast type
+
+  const triggerToast = (e) => {
+    e.preventDefault();
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000); // Automatically hides after 3 seconds
+  };
+
+  const handleToastTypeChange = (e) => {
+    setToastType(e.target.value); // Updates the toast type based on user selection
+  };
+
   const statuses = ["success", "warning", "error", "neutral"];
   const defaultColor = "#2545B8";
 
@@ -80,7 +94,7 @@ export default function Main() {
         <div className="tooltip-wrapper grid">
           {tooltipTypes.map((tooltip) => {
             return (
-              <>
+              <div key={nanoid()}>
                 <Tooltip baseColor={tooltip.baseColor} style={tooltip.type}>
                   <Tooltip.Icon>
                     <MdOutlineArchive />
@@ -99,27 +113,33 @@ export default function Main() {
                     <MdOutlineClose />
                   </Tooltip.Btn>
                 </Tooltip>
-              </>
+              </div>
             );
           })}
         </div>
       </Section>
 
       <Section header="Toast">
-        <div className="toast-wrapper grid">
-          {statuses.map((status) => {
-            return (
-              <>
-                <Toast type={status}>
-                  <Toast.Icon></Toast.Icon>
-                  <Toast.Content title="">
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </Toast.Content>
-                </Toast>
-              </>
-            );
-          })}
-        </div>
+        <form className="toast-form grid" onSubmit={triggerToast}>
+          <label className="type-header" htmlFor="status">
+            Type of Toast
+          </label>
+          <select className="form-select" name="status" id="status" onChange={handleToastTypeChange}>
+            <option value="success">Success</option>
+            <option value="warning">Warning</option>
+            <option value="error">Error</option>
+            <option value="neutral">Neutral</option>
+          </select>
+          <button className="form-btn">See Toast Example</button>
+        </form>
+
+        {/* Toast triggered by the form submission */}
+        <Toast type={toastType} show={showToast} duration={3000}>
+          <Toast.Icon />
+          <Toast.Content title={`Toast`}>
+            <p>This is a {toastType} toast notification.</p>
+          </Toast.Content>
+        </Toast>
       </Section>
     </main>
   );
