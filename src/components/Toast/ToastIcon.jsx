@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ToastContext } from "./Toast";
 
-export default function ToastIcon({ children }) {
+export default function ToastIcon() {
   const { icon, type } = useContext(ToastContext);
 
   return (

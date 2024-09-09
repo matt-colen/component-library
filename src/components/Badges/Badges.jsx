@@ -1,7 +1,8 @@
 import Badges from "./index";
+import { nanoid } from "nanoid";
 
 export default function BadgeRow({ style = "square" }) {
-  const pillColors = [
+  const badgeColors = [
     "gray",
     "red",
     "yellow",
@@ -16,8 +17,8 @@ export default function BadgeRow({ style = "square" }) {
     <>
       <h3 className="type-header">{style}</h3>
       <div className="badge-container grid">
-        {pillColors.map((color) => (
-          <Badges.Badge key={color} color={color} style={style}>
+        {badgeColors.map((color) => (
+          <Badges.Badge key={nanoid()} color={color} style={style}>
             Badge
           </Badges.Badge>
         ))}

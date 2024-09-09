@@ -81,7 +81,7 @@ button,
 
 /* Layout  */
 .container {
-  padding: var(--spacing-outer) 10%;
+  padding: var(--spacing-inner) 10%;
   max-width: 1350px;
   margin: 0 auto;
 }
@@ -100,6 +100,7 @@ button,
 }
 
 .type-header {
+  font-family: var(--font-header);
   font-size: 1rem;
   color: var(--color-txt-low-emphasis);
 }
@@ -409,6 +410,7 @@ button,
   visibility: hidden; /* Ensures it doesn't take up space when hidden */
   transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-in */
   z-index: 9999;
+  width: 90%;
 }
 
 .toast.show {
@@ -435,6 +437,9 @@ button,
 }
 
 @media (min-width: 500px) {
+  .toast {
+    width: unset;
+  }
   .toast-form {
     max-width: 200px;
   }
@@ -445,14 +450,15 @@ button,
 }
 
 .form-select {
+  cursor: pointer;
   padding: 0.5em;
   border-radius: var(--radius-sm);
+  font-size: 1.2rem;
 }
 
 .form-btn {
-  border: none;
   background: var(--color-bg-card-icon);
   color: #fff;
-  padding: 0.5em var(--spacing-min);
+  padding: var(--spacing-min);
   border-radius: var(--radius-sm);
 }

@@ -7,27 +7,27 @@ import Testimonial from "../Testimonial/index";
 import Tooltip from "../Tooltip/index";
 import Toast from "../Toast/index";
 import { nanoid } from "nanoid";
-import testimonialPic from "../../assets/images/testimonial.jpg";
 import { MdOutlineArchive } from "react-icons/md";
 import { MdOutlineClose } from "react-icons/md";
+import { MdQuickreply } from "react-icons/md";
+import testimonialPic from "../../assets/images/testimonial.jpg";
 import tooltipTypes from "../../tooltipData";
 
 export default function Main() {
   const [showToast, setShowToast] = useState(false);
-  const [toastType, setToastType] = useState("success"); // Tracks the selected toast type
+  const [toastType, setToastType] = useState("success"); // Tracks selected toast type
+  const statuses = ["success", "warning", "error", "neutral"];
+  const defaultColor = "#2545B8";
 
   const triggerToast = (e) => {
     e.preventDefault();
     setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000); // Automatically hides after 3 seconds
+    setTimeout(() => setShowToast(false), 3000); // Hides Toast after 3 seconds
   };
 
   const handleToastTypeChange = (e) => {
     setToastType(e.target.value); // Updates the toast type based on user selection
   };
-
-  const statuses = ["success", "warning", "error", "neutral"];
-  const defaultColor = "#2545B8";
 
   return (
     <main className="main grid">
@@ -65,6 +65,19 @@ export default function Main() {
             </p>
           </Card.Text>
         </Card>
+        <Card>
+          <Card.Icon bgColor="red" icon={<MdQuickreply />} />
+          <Card.Text header="Quick Replies">
+            <p>
+              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et
+              magna sit morbi lobortis.
+            </p>
+            <p>
+              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et
+              magna sit morbi lobortis.
+            </p>
+          </Card.Text>
+        </Card>
       </Section>
 
       <Section header="Testimonials">
@@ -80,7 +93,7 @@ export default function Main() {
             adipiscing nunc urna, sit.
           </Testimonial.Text>
         </Testimonial>
-        <Testimonial bgColor={defaultColor} img="" alt="">
+        <Testimonial bgColor="red" img="" alt="">
           <Testimonial.Img />
           <Testimonial.Text name="May Andersons" workDetails="Workcation, CTO">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna
@@ -124,22 +137,33 @@ export default function Main() {
           <label className="type-header" htmlFor="status">
             Type of Toast
           </label>
-          <select className="form-select" name="status" id="status" onChange={handleToastTypeChange}>
+          <select
+            className="form-select"
+            name="status"
+            id="status"
+            onChange={handleToastTypeChange}
+            value={toastType}
+          >
             <option value="success">Success</option>
             <option value="warning">Warning</option>
             <option value="error">Error</option>
             <option value="neutral">Neutral</option>
           </select>
-          <button className="form-btn">See Toast Example</button>
+          <button className="btn form-btn">See Toast Example</button>
         </form>
 
-        {/* Toast triggered by the form submission */}
-        <Toast type={toastType} show={showToast} duration={3000}>
-          <Toast.Icon />
-          <Toast.Content title={`Toast`}>
-            <p>This is a {toastType} toast notification.</p>
-          </Toast.Content>
-        </Toast>
+        {/* Toast triggered by form submission */}
+        {showToast && (
+          <Toast type={toastType}>
+            <Toast.Icon />
+            <Toast.Content title={`Toast`}>
+              <p>
+                This is a{toastType === "error" && "n"} {toastType} toast
+                notification.
+              </p>
+            </Toast.Content>
+          </Toast>
+        )}
       </Section>
     </main>
   );
